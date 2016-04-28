@@ -1,0 +1,49 @@
+---
+title: 'Script: Presentation'
+author: "Jonas Markgraf"
+date: "28 April 2016"
+output: word_document
+---
+# Slide 1: Title Slide
+
+- Small research project: analyzed publicly owned banks and their effect on electoral outcomes in German subnational politics
+- Content: 
+1. Motivation and background information
+2. Outlining hypotheses and storyline
+3. Malte: Presenting empirical strategy, data, and findings
+
+# Slide 2: Motivation
+- financial crisis of 2007!!
+    - brought banks to the center of public attention
+    - academic interest in the role of politics in regulating and taming bank behavior increased
+-	interaction between politics and banks widely studied already
+    - however: role of public banks and politicians' influence is largely neglected: surprising given the central importance of publicly owned banks in some European banking systems, esp. Germany
+    
+=> there is no nuanced understanding of effect of politicians on boards of publicly owned banks for banks’ activities and for electoral outcomes
+
+# Slide 3: Institutional Background
+- more than 400 Sparkassen in Germany
+- Sparkassen are important providers of 
+    - credit to SMEs and local governments, i.e. central players in Germany's Mittelstands economy
+    - & local public goods such as access to finance through branch system or donations to local initiatives and sports teams
+- Sparkassen have strong regional outlook and are deeply entrenched in German local politics
+    - business areas are regionally constrained
+    - publicly owned by counties and/or municipalities
+    - local mayors have sometimes seat at local Sparkasse, but not all mayors in Germany have seat at Sparkassen board --> fact that we exploit for our research design
+    
+# Slide 4: Map
+- as an illustration how municipality borders and Sparkassen business areas match and how Sparkassen operate.
+    
+# Slide 5: Hypothesis
+- based on rational choice assumptions that actors are rational utility maximizers, we hypothesize that mayors with a Sparkassen board seat extract political rents from this position, hence, increase their re-election chance
+- thus, our hypothesis is that mayors with a board seat at a Sparkasse are more likely to get re-elected than mayors without a board seat
+
+# Slide 6: Storyline
+- in what way can a board seat help a mayor to get re-elected? Two different mechanisms:
+    - direct channel: mayors can influence strategic decisions of banks
+        - influence credit volume, e.g. increase before election
+        - postpone unpopular steps such as consolidation or mergers until after election
+        - direct donations to projects with high visibility or force bank to payout profits to owners, i.e. municipalities
+        
+    - indirect channel: voters prefer qualified mayors over unqualified mayors , and board membership might be interpreted as a strong signal of financial competence of the mayor
+- 
