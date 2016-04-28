@@ -1,14 +1,14 @@
 ---
 title: "Political Economy of Public Banks"
 subtitle: "Electoral Effects of Savings Banks in German Subnational Elections"
-author: |
-  | Jonas Markgraf & Malte Berneaud-Kötz
+author: "Jonas Markgraf & Malte Berneaud-Kötz"
+date: |
   | Hertie School of Governance
-date: "02 May 2016"
+  | 02 May 2016
 output: 
   beamer_presentation:
-    theme: "Szeged"
-    colortheme: "dolphin"
+    theme: "Warsaw"
+    colortheme: "beaver"
     fonttheme: "structuresmallcapsserif"
     slide_level: 2
 ---
@@ -31,8 +31,9 @@ output:
 ![](SavingsBank_map.png) # any idea how to center the image?
 
 
-# Argument
+# Hypothesis
 ## Hypothesis
+
 - mayors with board seat in savings bank extract political rents from board membership
 
  > **Hypothesis:**
@@ -40,6 +41,7 @@ output:
  > *Mayors with a board seat in a Sparkasse are more likely to be re-elected than mayors without a boardseat, holding all other explanatory variables constant.*
 
 ## Storyline
+
 How does membership in a *Sparkasse* affect electoral success?
 
 * direct channel: influence on strategic decisions of bank
@@ -49,6 +51,14 @@ How does membership in a *Sparkasse* affect electoral success?
 
 * indirect channel: competence signal to constituency
 
-# Empirical Strategy
+# Empirical Strategy & Findings | Model & Controls
 
-# Findings
+## Data
+
+## Findings
+
+----
+
+Thank you for your attention!
+
+https://github.com/jmarkgraf/PresentationAssignment
