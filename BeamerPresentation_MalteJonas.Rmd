@@ -1,0 +1,54 @@
+---
+title: "Political Economy of Public Banks"
+subtitle: "Electoral Effects of Savings Banks in German Subnational Elections"
+author: |
+  | Jonas Markgraf & Malte Berneaud-Kötz
+  | Hertie School of Governance
+date: "02 May 2016"
+output: 
+  beamer_presentation:
+    theme: "Szeged"
+    colortheme: "dolphin"
+    fonttheme: "structuresmallcapsserif"
+    slide_level: 2
+---
+
+# Background
+## Motivation
+
+- financial crisis 2007-8: increased interest in bank-politics interface
+- politicians' participation in public banks understudied
+- public banks are central element of Europe's banking sector
+
+## Institutional Setting
+
+- large number of public savings banks (*Sparkassen*) in Germany
+- *Sparkassen* important providers of credit and public goods
+- regional outlook of savings banks & close ties to local politics
+
+## Sparkassen business areas
+
+![](SavingsBank_map.png) # any idea how to center the image?
+
+
+# Argument
+## Hypothesis
+- mayors with board seat in savings bank extract political rents from board membership
+
+ > **Hypothesis:**
+
+ > *Mayors with a board seat in a Sparkasse are more likely to be re-elected than mayors without a boardseat, holding all other explanatory variables constant.*
+
+## Storyline
+How does membership in a *Sparkasse* affect electoral success?
+
+* direct channel: influence on strategic decisions of bank
+     + credit volume
+     + timing of consolidation and mergers
+     + donations & payouts
+
+* indirect channel: competence signal to constituency
+
+# Empirical Strategy
+
+# Findings
