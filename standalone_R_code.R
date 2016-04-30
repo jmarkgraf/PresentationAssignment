@@ -139,11 +139,7 @@ MayorElection$SparkassenMember <- is.element(MayorElection$NameCandidate1, uniqu
 MayorElection <- slide(MayorElection, Var = "SparkassenMember",
                        NewVar = "IncumbentSparkassenMember")
 
-
-# Subsetting the data set -------------------------------------------------
-
-# subsetting by year
-MayorElection <- subset(MayorElection, Year >= 2006)
+# Subsetting the data set (part 1) -------------------------------------------------
 
 # subsetting by election type; excluding run-off elections
 MayorElection <- subset(MayorElection, ElectionType != 3)
@@ -155,12 +151,14 @@ MayorElection <- subset(MayorElection, Contested == 1)
 ## Lagged DV
 # creating lagged incumbency for the calculation of the re-election binary variable
 MayorElection <- slide(MayorElection, Var = "NameCandidate1", TimeVar = "ElectionDate", NewVar = "L.NameCandidate1")
-
 MayorElection$Reelection <- ifelse(MayorElection$NameCandidate1 == MayorElection$L.NameCandidate1, 1, 0)
-
-MayorElection$Reelection <- as.factor(MayorElection$Reelection)
 
 # Lagging variables for analysis, lag of SparkassenMembership is already implemented above. Lag variable is called "IncumbentSparkassenMember"
 MayorElection <- slide(MayorElection, Var = "Geschlecht1", TimeVar = "ElectionDate", NewVar = "L.Geschlecht1")
 MayorElection <- slide(MayorElection, Var = "VoteShareWinner", TimeVar = "ElectionDate", NewVar = "L.VoteShareWinner")
+
+# Subsetting for years ----------------------------------------------------
+MayorElection <- subset(MayorElection, Year >= 2006)
+
+
 
