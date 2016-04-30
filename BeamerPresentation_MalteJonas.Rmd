@@ -13,6 +13,18 @@ output:
     slide_level: 2
 ---
 
+```{r setting_chunk_options, include=FALSE}
+knitr::opts_chunk$set(fig.height=3, fig.width = 2.4, fig.align = "center", fig.path='graphs/',
+                      include = FALSE, warning=FALSE, message=FALSE, cache=TRUE)
+# Supressed output for any code chunk in the document, so all graphs, tables,
+# etc which need to have the outputs shown should use include = TRUE as an option
+```
+
+```{r loading_preparing_data}
+source("standalone_R_code.R")
+```
+
+
 # Background
 ## Motivation
 
@@ -55,7 +67,18 @@ How does membership in a *Sparkasse* affect electoral success?
 
 ## Data
 
+
 ## Findings
+```{r regression models}
+fullmodel <- glm(Reelection~IncumbentSparkassenMember + L.VoteShareWinner + L.Geschlecht1 + log(NumberEligVoter),
+  data = MayorElection,
+  family = "binomial")
+
+```
+
+```{r regression_table, include=TRUE, echo=FALSE, asis=TRUE}
+stargazer(fullmodel, )
+```
 
 ----
 
