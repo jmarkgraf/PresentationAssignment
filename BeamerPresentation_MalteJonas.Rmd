@@ -28,7 +28,7 @@ output:
 
 ## Sparkassen business areas
 
-![](SavingsBank_map.png) # any idea how to center the image?
+![](SavingsBank_map.png) 
 
 
 # Hypothesis
