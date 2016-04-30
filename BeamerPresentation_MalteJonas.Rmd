@@ -14,7 +14,7 @@ output:
 ---
 
 ```{r setting_chunk_options, include=FALSE}
-knitr::opts_chunk$set(fig.height=3, fig.width = 2.4, fig.align = "center", fig.path='graphs/',
+knitr::opts_chunk$set(fig.height=3, fig.width = 5, fig.align = "center", fig.path='graphs/',
                       include = FALSE, warning=FALSE, message=FALSE, cache=TRUE)
 # Supressed output for any code chunk in the document, so all graphs, tables,
 # etc which need to have the outputs shown should use include = TRUE as an option
@@ -66,18 +66,57 @@ How does membership in a *Sparkasse* affect electoral success?
 # Empirical Strategy & Findings | Model & Controls
 
 ## Data
+Logistic regression to deal with binary dependent variable
 
+  + DV: Re-election of mayor yes / no
+  + main IV: *Sparkassen* board membership in year prior to election
+  + control IVs:
+    + vote share received by the last winning mayor
+    + gender
+    + municipality size proxy: log(number of eligible voters)
 
-## Findings
+## Regression Results
 ```{r regression models}
 fullmodel <- glm(Reelection~IncumbentSparkassenMember + L.VoteShareWinner + L.Geschlecht1 + log(NumberEligVoter),
   data = MayorElection,
   family = "binomial")
-
+covarnames <- c("Sparkassen board member", "Previous vote share", "Female", "Number eligible voters")
 ```
 
-```{r regression_table, include=TRUE, echo=FALSE, asis=TRUE}
-stargazer(fullmodel, )
+```{r tests, include=TRUE, echo=FALSE, results="asis"}
+stargazer(fullmodel, title = "Logistic regression results", dep.var.labels = "Re-election of mayor", 
+          covariate.labels = covarnames, header = FALSE, font.size = "scriptsize", single.row = TRUE,
+          apply.coef = exp, t.auto = F, p.auto = F, report = "vct*")
+## Note: coefficients are reported as odds ratios, but t-scores and p-values are calculated using the underlying logit function, coefficients, and standard errors
+```
+
+## A closer look at the previous vote share
+```{r simulation_for_vote_share}
+# Creating dummy from lagged sex variable
+MayorElection$L.DummySex <- ifelse(MayorElection$L.Geschlecht1 == "m", 0, 1)
+
+# Find range of L.VoteShare1 in data
+vs_range <- 20:97
+# extract coefficients and variance-covariance matrix from model
+fm_coef <- matrix(coef(fullmodel))
+fm_vcov <- vcov(fullmodel)
+
+# drawing simulations of the point estimates
+drawn <- data.frame(mvrnorm(n = 1000, mu = fm_coef, Sigma = fm_vcov))
+
+# matching simulations to all possible values in L.VoteShare1
+draw_sim <- merge(drawn, vs_range)
+draw_sim <- dplyr::rename(draw_sim, fitted.vs = y)
+
+# Calculating predicted probabilites with the data at hand
+# I am using the averages of all covariates except vote share
+draw_sim$pred.prob <- 1 / (1 + exp(-(draw_sim[, 1] + draw_sim[, 2] + draw_sim[, 3] * draw_sim[, 6] + draw_sim[, 4] * mean(MayorElection$L.DummySex) + draw_sim[, 5] * mean(log(MayorElection$NumberEligVoter), na.rm = TRUE))))
+```
+
+```{r graphing_simulation, include=TRUE, echo=FALSE}
+ggplot(draw_sim, aes(x = fitted.vs, y = pred.prob)) + geom_point(alpha = 0.1) +
+  stat_smooth(se = FALSE) + theme_bw() + ggtitle("Probability of Re-election over Previous Vote Shares") + 
+  ylab("Probability of Re-election") + xlab("Vote Share in Previous Election")
 ```
 
 ----

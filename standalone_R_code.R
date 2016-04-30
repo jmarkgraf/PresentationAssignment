@@ -2,9 +2,11 @@
 # Author: Malte Berneaud
 
 # Packages needed for the execution of this Rmd are listed in include.packages and checked against the installed packages on the machine executing the code. If they are not installed, they will be installed automatically.
-include.packages <- c("dplyr", "ggplot2", "stringr", "readxl", "DataCombine", "texreg", "stargazer")
+include.packages <- c("dplyr", "ggplot2", "stringr", "readxl", "DataCombine", "texreg",
+                      "stargazer", "MASS")
 needed.packages <- include.packages[!(include.packages %in% installed.packages()[, "Package"])]
-if(length(needed.packages)) install.packages(needed.packages, repos = "https://cran.uni-muenster.de/")
+if(length(needed.packages)) install.packages(needed.packages, 
+                                             repos = "https://cran.uni-muenster.de/")
 
 lapply(include.packages, library, character.only = TRUE)  # loading all packages at once
 
@@ -44,8 +46,9 @@ SparkassenBoard$TopPosition <- as.character(SparkassenBoard$TopPosition)
 
 # Create sub-dataframes
 ## :unique banks
-SparkassenBoard_UniqueBanks <- unique(SparkassenBoard[ ,c("bank_ID", "bank_name", "federal_state", "city", "board_size")])
-## :unique board members
+SparkassenBoard_UniqueBanks <- unique(SparkassenBoard[ ,c("bank_ID", "bank_name", 
+                                                          "federal_state", "city", 
+                                                          "board_size")])
 
 ## :Top Positions only
 SparkassenBoard_TopPositions <- subset(SparkassenBoard, TopPosition == 1)
@@ -159,6 +162,7 @@ MayorElection <- slide(MayorElection, Var = "VoteShareWinner", TimeVar = "Electi
 
 # Subsetting for years ----------------------------------------------------
 MayorElection <- subset(MayorElection, Year >= 2006)
+
 
 
 
