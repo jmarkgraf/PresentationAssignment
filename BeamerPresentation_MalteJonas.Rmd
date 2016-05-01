@@ -1,16 +1,17 @@
 ---
 title: "Political Economy of Public Banks"
-subtitle: "Electoral Effects of Savings Banks in German Subnational Elections"
 author: "Jonas Markgraf & Malte Berneaud-Kötz"
 date: |
   | Hertie School of Governance
   | 02 May 2016
-output: 
+output:
   beamer_presentation:
-    theme: "Warsaw"
-    colortheme: "beaver"
-    fonttheme: "structuresmallcapsserif"
+    colortheme: beaver
+    fonttheme: structuresmallcapsserif
     slide_level: 2
+    theme: Warsaw
+  ioslides_presentation: default
+subtitle: Electoral Effects of Savings Banks in German Subnational Elections
 ---
 
 ```{r setting_chunk_options, include=FALSE}
@@ -41,7 +42,7 @@ source("standalone_R_code.R")
 
 ## Sparkassen business areas
 
-![](SavingsBank_map.png) # any ideas how to centre?
+![](SavingsBank_map.png)
 
 
 # Hypothesis
