@@ -6,10 +6,10 @@ date: |
   | 02 May 2016
 output:
   beamer_presentation:
-    colortheme: beaver
+    colortheme: dolphin
     fonttheme: structuresmallcapsserif
     slide_level: 2
-    theme: Warsaw
+    theme: Szeged
   ioslides_presentation: default
 subtitle: Electoral Effects of Savings Banks in German Subnational Elections
 ---
