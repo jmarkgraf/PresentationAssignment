@@ -1,5 +1,6 @@
-# R code for the cleaning of the data, creation of additional variables, subsetting and lagging
+# R code for the cleaning of the data, creation of additional variables, subsetting and lagging of variables
 # Author: Malte Berneaud
+# Date: 30.04.2016
 
 # Packages needed for the execution of this Rmd are listed in include.packages and checked against the installed packages on the machine executing the code. If they are not installed, they will be installed automatically.
 include.packages <- c("dplyr", "ggplot2", "stringr", "readxl", "DataCombine", "texreg",
