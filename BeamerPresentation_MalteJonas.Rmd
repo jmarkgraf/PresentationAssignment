@@ -21,6 +21,7 @@ knitr::opts_chunk$set(fig.height=3, fig.width = 5, fig.align = "center", fig.pat
 ```
 
 ```{r loading_preparing_data}
+# Loading of libraries, cleaning and subsetting code is done in the external R-script
 source("standalone_R_code.R")
 ```
 
@@ -40,7 +41,7 @@ source("standalone_R_code.R")
 
 ## Sparkassen business areas
 
-![](SavingsBank_map.png) 
+![](SavingsBank_map.png) # any ideas how to centre?
 
 
 # Hypothesis
@@ -66,6 +67,20 @@ How does membership in a *Sparkasse* affect electoral success?
 # Empirical Strategy & Findings | Model & Controls
 
 ## Data
+  1. Data on all Bavarian mayoral elections conducted 1948-2014 were obtained from the Bavarian Statistical Office
+
+  2. Hand collected dataset on board members in Bavaria's *Sparkassen* for 2006-2015
+
+    
+Data is matched on names to find mayors who were members of a *Sparkassen* governing board
+
+## Subset & Statistical Model
+Subset
+
+  + only elections from 2006 to 2014
+  + only elections with at least two candidates
+  + excluded elections where a run-off was necessary
+
 Logistic regression to deal with binary dependent variable
 
   + DV: Re-election of mayor yes / no
@@ -84,13 +99,13 @@ covarnames <- c("Sparkassen board member", "Previous vote share", "Female", "Num
 ```
 
 ```{r tests, include=TRUE, echo=FALSE, results="asis"}
-stargazer(fullmodel, title = "Logistic regression results", dep.var.labels = "Re-election of mayor", 
+stargazer(fullmodel, title = "Logistic regression results w/ odds ratios", dep.var.labels = "Re-election of mayor", 
           covariate.labels = covarnames, header = FALSE, font.size = "scriptsize", single.row = TRUE,
           apply.coef = exp, t.auto = F, p.auto = F, report = "vct*")
 ## Note: coefficients are reported as odds ratios, but t-scores and p-values are calculated using the underlying logit function, coefficients, and standard errors
 ```
 
-## A closer look at the previous vote share
+## A closer look at previous vote share
 ```{r simulation_for_vote_share}
 # Creating dummy from lagged sex variable
 MayorElection$L.DummySex <- ifelse(MayorElection$L.Geschlecht1 == "m", 0, 1)
@@ -115,7 +130,7 @@ draw_sim$pred.prob <- 1 / (1 + exp(-(draw_sim[, 1] + draw_sim[, 2] + draw_sim[, 
 
 ```{r graphing_simulation, include=TRUE, echo=FALSE}
 ggplot(draw_sim, aes(x = fitted.vs, y = pred.prob)) + geom_point(alpha = 0.1) +
-  stat_smooth(se = FALSE) + theme_bw() + ggtitle("Probability of Re-election over Previous Vote Shares") + 
+  stat_smooth(se = FALSE) + theme_bw() + ggtitle("Probability of Re-election across Previous Vote Shares") + 
   ylab("Probability of Re-election") + xlab("Vote Share in Previous Election")
 ```
 

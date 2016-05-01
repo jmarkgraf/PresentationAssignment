@@ -1,0 +1,53 @@
+---
+title: "Presentation Script"
+author: "Malte Berneaud"
+date: "May 1, 2016"
+output: word_document
+---
+
+# Empirical Strategy & Findings | Model & Controls 
+
+## Data
+- Data on mayoral elections were obtained from the Bavarian Statistical Office for a fee
+ - We cannot share the data freely because of that
+ - contains information on election date, name of all candidates, their vote shares and party affiliations
+- Data on Sparkassen board members
+  - hand-collected database from yearly reports produced jointly by all the Sparkassen
+  - contains board member names, their occupations and their positions within the board
+
+- Sparkassen board members and mayors in the election years were matched on names to create an indicator of mayors who were members of the Sparkasse. While this might lead to mismatches, mayors generally obtain membership in a Sparkassen board after they enter office.
+
+## Subset & Statistical Model
+Subset: 
+- We selected only elections which happened from 2006 to 2014, the time-frame covered by both data sets jointly
+- Excluded all elections where there was only one candidate and hence no electoral competition
+- Excluded all elections where a run-off was necessary, as the winner of the first round must not be the person who eventually became the mayor
+
+Statistical model: 
+- logistic regression model due to our binary dependent variable
+  - DV: Re-election of a mayor: yes / no --> 1 / 0 
+  - main IV: Sparkassen membership: yes / no --> binary variable
+  - control IVs: 
+    - Vote share candidate obtained in previous election, to control for incumbency advantage
+    - Sex, because we expect females to do worse than men and have lower chances of re-election
+    - Logged number of eligible voters in the municipality, to control for the size of the municipality
+    
+## Regression Results
+- We find a positive effect of board membership on the odds of getting re-elected 
+  - Mayors who are board members of Sparkassen have 23% higher odds of getting re-elected
+Control variables: 
+  - Previous vote share has a negative effect on chances of re-election (odds ratio lower than 0)
+    - this is highly surprising as we would have expected the opposite
+  - Women have around 24% lower odds of getting re-elected, which is in the expected direction
+  - Not really interested in the coefficient estimate on the size of the municipality
+  
+## A Closer Look at Previous Vote Share
+- Predicted probabilities of re-election over all possible values of the previous vote share using simulated point estimates confirms that probability of being re-elected decreases with increases in the vote share obtained by that same candidate in the last election. 
+
+- Possible explanation: Established candidates can still be de-throned despite high support if a better candidate comes along
+
+
+### Optional Explanation of Method: 
+- We simulated 1000 point estimates for the previous vote shares with a random normal distribution and used these to create predicted 1000 predicted probabilites at every possible value of "Previous vote share", which ranges from 20 to 97.
+  - yielded 77,000 simulated point estimates, through which we fitted a line
+  
