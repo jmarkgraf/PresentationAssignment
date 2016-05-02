@@ -44,7 +44,7 @@ Control variables:
 ## A Closer Look at Previous Vote Share
 - Predicted probabilities of re-election over all possible values of the previous vote share using simulated point estimates confirms that probability of being re-elected decreases with increases in the vote share obtained by that same candidate in the last election. 
 
-- Possible explanation: Established candidates can still be de-throned despite high support if a better candidate comes along
+- Possible explanation: We do not account for retirement. Established, popular long-term mayors will not stand for re-election again despite high approval ratings.
 
 
 ### Optional Explanation of Method: 

@@ -15,6 +15,11 @@ subtitle: Electoral Effects of Savings Banks in German Subnational Elections
 ---
 
 ```{r setting_chunk_options, include=FALSE}
+############### NOTE ###############
+# In order for the RMarkdown file to render correctly, you need to place the source data sets into the data/ folder in the root directory of this repo. 
+
+setwd("~/Git/PresentationAssignment")  # Adjust this in your file to match the directory where you cloned the repo. 
+
 knitr::opts_chunk$set(fig.height=3, fig.width = 5, fig.align = "center", fig.path='graphs/',
                       include = FALSE, warning=FALSE, message=FALSE, cache=TRUE)
 # Supressed output for any code chunk in the document, so all graphs, tables,
@@ -67,20 +72,23 @@ How does membership in a *Sparkasse* affect electoral success?
 
 # Empirical Strategy & Findings | Model & Controls
 
-## Data
+## Data & Subset
+### Data
   1. Data on all Bavarian mayoral elections conducted 1948-2014 were obtained from the Bavarian Statistical Office
 
   2. Hand collected dataset on board members in Bavaria's *Sparkassen* for 2006-2015
 
     
-Data is matched on names to find mayors who were members of a *Sparkassen* governing board
+Data is matched on names to find mayors who were members of a *Sparkassen* governing board  
 
-## Subset & Statistical Model
-Subset
+### Subset
 
-  + only elections from 2006 to 2014
-  + only elections with at least two candidates
-  + excluded elections where a run-off was necessary
+  + 2006 to 2014
+  + competitive elections
+  + no run-offs
+
+
+## Statistical Model
 
 Logistic regression to deal with binary dependent variable
 
@@ -102,7 +110,7 @@ covarnames <- c("Sparkassen board member", "Previous vote share", "Female", "Num
 ```{r tests, include=TRUE, echo=FALSE, results="asis"}
 stargazer(fullmodel, title = "Logistic regression results w/ odds ratios", dep.var.labels = "Re-election of mayor", 
           covariate.labels = covarnames, header = FALSE, font.size = "scriptsize", single.row = TRUE,
-          apply.coef = exp, t.auto = F, p.auto = F, report = "vct*")
+          apply.coef = exp, t.auto = F, p.auto = F, report = "vcp*", digits = 2, keep.stat = c("n", "ll", "rsq"))
 ## Note: coefficients are reported as odds ratios, but t-scores and p-values are calculated using the underlying logit function, coefficients, and standard errors
 ```
 
