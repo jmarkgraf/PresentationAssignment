@@ -38,7 +38,7 @@ Statistical model:
 Control variables: 
   - Previous vote share has a negative effect on chances of re-election (odds ratio lower than 0)
     - this is highly surprising as we would have expected the opposite
-  - Women have around 24% lower odds of getting re-elected, which is in the expected direction
+  - Female mayors have around 24% lower odds of getting re-elected, which is in the expected direction
   - Not really interested in the coefficient estimate on the size of the municipality
   
 ## A Closer Look at Previous Vote Share
